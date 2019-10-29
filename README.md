@@ -1,2 +1,4 @@
 # BookReadingList
-App that queries google book api and lets the user save books to a local reading list 
+App that queries the google books api and allows the user to add books to a reading list. 
+
+Run the app with 'python google_book.py' and follow the prompts.  
