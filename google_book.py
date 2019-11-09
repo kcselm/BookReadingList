@@ -30,7 +30,8 @@ def get_books():
         except:
             print("  No publishing company")
 
-        print(f'{index + 1} {author}\n  {title}\n  {publisher}\n')
+        # print(f'{index + 1} {author}\n  {title}\n  {publisher}\n') python version 3.6
+        print('%s %s\n %s \n %s\n' % (index+1, author, title, publisher)) 
         book = [author, title, publisher]
         books.append(book)
     
