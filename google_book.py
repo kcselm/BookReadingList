@@ -34,7 +34,6 @@ def get_books():
         print('%s %s\n %s \n %s\n' % (index+1, author, title, publisher)) 
         book = [author, title, publisher]
         books.append(book)
-    
     print_options(books)
 
 
@@ -63,7 +62,8 @@ def add_to_reading_list(books, reading_list, option):
     :param list reading_list: a list of saved books for the user
     :param string option: the users input from the command line
     """
-    reading_list +=  books[option-1]
+    # reading_list +=  books[option-1]    
+    reading_list.append(books[option-1])
     print_options(books, reading_list)
 
 
@@ -73,11 +73,13 @@ def view_reading_list(books, reading_list):
     :param list books: books returned from the users query
     :param list reading_list: a list of saved books for the user
     """
-    # for i in len(reading_list):
-    #     print(f'{i} {reading_list[i][0]}\n  {reading_list[i][1]}\n {reading_list[i][2]}\n\n')
-    print(reading_list)
-    print_options(books, reading_list)
+    for i in range(len(reading_list)):
+        #print(f'{i} {reading_list[i][0]}\n  {reading_list[i][1]}\n {reading_list[i][2]}\n\n')
+        index = reading_list[i]
+        print('%s %s\n %s\n %s\n' % (i+1, index[0], index[1], index[2]))
 
+    print_options(books, reading_list)
+ 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
