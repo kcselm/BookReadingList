@@ -44,15 +44,20 @@ def print_options(books, reading_list=[], option="query"):
     :param list reading_list: a list of saved books for the user
     :param string option: the users input from the command line
     """
-    option = input("Enter an option: \n0 to view the reading_list\n1-5 to add a book to reading list\n" +
-            "query to make another query\n")
+    option = input("Enter an option: \n\"view\" to view the reading_list\n1-5 to add a book to reading list\n" +
+            "\"query\" to make another query \n\"exit\" to escape the program\n")
 
-    if option == "0":
+    if option == "view":
         view_reading_list(books, reading_list)
     elif option in map(str,(range(1, 6))):
         add_to_reading_list(books, reading_list, int(option))
     elif option == "query":
         get_books()
+    elif option == "exit":
+        exit()
+    else: 
+        print("Option not valid")
+        print_options(books)
 
 
 def add_to_reading_list(books, reading_list, option):
