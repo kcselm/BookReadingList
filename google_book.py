@@ -12,6 +12,10 @@ def main():
     get_books()
 
 def get_input(text):
+    """
+    Get input from user and return a string.
+    :param string text: input from the user. 
+    """
     return input(text)
 
 def get_books():
