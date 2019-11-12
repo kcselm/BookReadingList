@@ -21,7 +21,7 @@ def get_books():
     PARAMS = {'volumes': book_query}
     books = []
     try: 
-        res = requests.get(url=url, params=PARAMS)
+        res = requests.get(url=url, params=PARAMS, timeout=5)
         data = res.json()
 
         for index in range(MAX_RESULTS):
