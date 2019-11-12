@@ -23,7 +23,7 @@ def get_books():
     books = []
 
     for index in range(MAX_RESULTS):
-        author = data['items'][index]['volumeInfo']['authors'][0]
+        author = ', '.join(data['items'][index]['volumeInfo']['authors'])
         title = data['items'][index]['volumeInfo']['title']
         try:
             publisher = data['items'][index]['volumeInfo']['publisher']
