@@ -11,10 +11,12 @@ def main():
     reading_list = []
     get_books()
 
+def get_input(text):
+    return input(text)
 
 def get_books():
     """Query the books from the API"""
-    book_query = input("Please enter a query to find books: ")
+    book_query = get_input("Please enter a query to find books: ")
     url = URL + book_query + "&maxResults=" + str(MAX_RESULTS)
     PARAMS = {'volumes': book_query}
 
