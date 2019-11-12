@@ -19,23 +19,26 @@ def get_books():
     book_query = get_input("Please enter a query to find books: ")
     url = URL + book_query + "&maxResults=" + str(MAX_RESULTS)
     PARAMS = {'volumes': book_query}
-
-    res = requests.get(url=url, params=PARAMS)
-    data = res.json()
     books = []
+    try: 
+        res = requests.get(url=url, params=PARAMS)
+        data = res.json()
 
-    for index in range(MAX_RESULTS):
-        author = ', '.join(data['items'][index]['volumeInfo']['authors'])
-        title = data['items'][index]['volumeInfo']['title']
-        try:
-            publisher = data['items'][index]['volumeInfo']['publisher']
-        except:
-            print("  No publishing company")
-
-        # print(f'{index + 1} {author}\n  {title}\n  {publisher}\n') python version 3.6
-        print('%s %s\n %s \n %s\n' % (index+1, author, title, publisher)) 
-        book = [author, title, publisher]
-        books.append(book)
+        for index in range(MAX_RESULTS):
+            author = ', '.join(data['items'][index]['volumeInfo']['authors'])
+            title = data['items'][index]['volumeInfo']['title']
+            try:
+                publisher = data['items'][index]['volumeInfo']['publisher']
+            except:
+                print("  No publishing company")
+                
+            # print(f'{index + 1} {author}\n  {title}\n  {publisher}\n') python version 3.6
+            print('%s %s\n %s \n %s\n' % (index+1, author, title, publisher)) 
+            book = [author, title, publisher]
+            books.append(book)
+    except requests.exceptions.RequestException as e:
+        print("There was a problem fetching books.  Please try again later.")
+        exit()
     print_options(books)
 
 
